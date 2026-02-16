@@ -157,6 +157,54 @@ const papersData = [
     },
     {
         id: 10,
+        title: "Physics Form 1 Questions",
+        subject: "Physics",
+        level: "Form 1",
+        description: "Comprehensive practice questions for Form 1 Physics covering fundamentals and key concepts",
+        author: "Education Materials",
+        year: 2026,
+        downloads: 145,
+        rating: 4.8,
+        featured: true,
+        pages: 25,
+        difficulty: "Medium",
+        pdfUrl: "papers/physics/physics-form-1-questions.pdf",
+        url: "#"
+    },
+    {
+        id: 11,
+        title: "Form 4 Additional Mathematics Revision",
+        subject: "Mathematics",
+        level: "Form 4",
+        description: "Comprehensive revision questions for Form 4 Additional Mathematics - preparation for national exams",
+        author: "Mathematics Department",
+        year: 2026,
+        downloads: 267,
+        rating: 4.9,
+        featured: true,
+        pages: 28,
+        difficulty: "Hard",
+        pdfUrl: "papers/mathematics/form-4-additional-mathematics.pdf",
+        url: "#"
+    },
+    {
+        id: 12,
+        title: "KLB Biology Form 4",
+        subject: "Biology",
+        level: "Form 4",
+        description: "Complete KLB Biology Form 4 study guide covering cellular biology, genetics, ecology, and physiology",
+        author: "KLB Publishers",
+        year: 2026,
+        downloads: 389,
+        rating: 4.9,
+        featured: true,
+        pages: 180,
+        difficulty: "Hard",
+        pdfUrl: "papers/biology/klb-biology-form-4.pdf",
+        url: "#"
+    },
+    {
+        id: 13,
         title: "Evolution and Genetics",
         subject: "Biology",
         level: "Form 4",
@@ -172,7 +220,7 @@ const papersData = [
         url: "#"
     },
     {
-        id: 11,
+        id: 14,
         title: "Grammar and Composition",
         subject: "English",
         level: "Grade 9",
@@ -188,7 +236,7 @@ const papersData = [
         url: "#"
     },
     {
-        id: 12,
+        id: 15,
         title: "Ancient Civilizations",
         subject: "History",
         level: "Grade 10",
