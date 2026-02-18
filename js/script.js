@@ -615,63 +615,6 @@ function applyAdvancedFilters() {
     filterPapers();
 }
 
-/**
- * Search Suggestions
- */
-function showSearchSuggestions() {
-    const input = document.getElementById('searchInput');
-    const value = input.value.toLowerCase();
-    const suggestionsList = document.getElementById('searchSuggestions');
-
-    suggestionsList.innerHTML = ''; // Clear previous
-
-    if (value.length < 2) return;
-
-    const suggestions = papersData
-        .filter(paper => paper.title.toLowerCase().includes(value))
-        .map(paper => paper.title)
-        .slice(0, 5); // Limit to 5
-
-    suggestions.forEach(title => {
-        const option = document.createElement('option');
-        option.value = title;
-        suggestionsList.appendChild(option);
-    });
-}
-
-/**
- * Batch Download (Mock)
- */
-function toggleSelectAll() {
-    // Checkboxes functionality would need to be added to renderPapers first
-    alert('Select All feature requires checkboxes on paper cards. (Feature coming soon)');
-}
-
-function batchDownloadPapers() {
-    alert('Batch download started... (Mock)');
-}
-
-/**
- * Difficulty Voting (Mock)
- */
-function voteDifficulty(level) {
-    const feedback = document.getElementById('difficultyFeedback');
-    feedback.style.display = 'block';
-    feedback.textContent = `Thanks for voting! You marked this as '${level}'.`;
-    feedback.style.color = 'green';
-
-    // Hide buttons temporarily to show state
-    // setTimeout(() => { feedback.style.display = 'none'; }, 3000);
-}
-
-/**
- * Social Sharing (Mock)
- */
-function sharePaperLink() {
-    const url = window.location.href; // In real app, this might be specific paper URL
-    navigator.clipboard.writeText(url).then(() => {
-        alert('Link copied to clipboard!');
-=======
 // ------------------
 // Utility functions
 // ------------------
@@ -854,19 +797,32 @@ function voteDifficulty(level) {
 function handleContactSubmit(event) {
     event.preventDefault();
     const form = event.target;
-    const name = form.contactName.value.trim();
-    const email = form.contactEmail.value.trim();
-    const subject = form.contactSubject.value.trim() || 'Contact from Julisha Library';
-    const message = form.contactMessage.value.trim();
+    const formData = new FormData(form);
 
-    // Construct mailto link
-    const mailtoSubject = encodeURIComponent(subject);
-    const mailtoBody = encodeURIComponent(
-        `Name: ${name}\nEmail: ${email}\n\n${message}`
-    );
-    // replace with actual support address if available
-    window.location.href = `mailto:support@julishalibrary.org?subject=${mailtoSubject}&body=${mailtoBody}`;
-
-    // reset form after navigation triggered
-    form.reset();
+    // Replace the action URL with your real endpoint (Formspree, Netlify, etc.)
+    fetch(form.action, {
+        method: form.method || 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Thank you! Your message has been sent.');
+            form.reset();
+        } else {
+            response.json().then(data => {
+                if (data.errors) {
+                    alert(data.errors.map(e => e.message).join(', '));
+                } else {
+                    alert('Oops! There was a problem submitting your form.');
+                }
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Error submitting contact form:', error);
+        alert('Oops! There was a problem submitting your form.');
+    });
 }
