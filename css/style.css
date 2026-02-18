@@ -222,6 +222,47 @@ body {
     gap: 0.8rem;
 }
 
+/* collapsible filter toggles */
+.collapsible-filters .filter-toggle,
+.section-toggle {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    transition: var(--transition);
+    margin-bottom: 0.5rem;
+}
+
+.collapsible-filters .filter-toggle:hover,
+.section-toggle:hover {
+    background-color: var(--secondary-color);
+}
+
+.toggle-icon {
+    margin-left: auto;
+    transition: transform 0.3s ease;
+}
+
+.filter-content {
+    display: none;
+    margin-top: 1rem;
+}
+
+.level-filters,
+.filter-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+
 .filter-btn {
     padding: 0.6rem 1.2rem;
     background-color: var(--bg-color);

@@ -279,7 +279,6 @@ const papersData = [
         difficulty: "Easy",
         pdfUrl: "papers/geography/Geography - Geography Form 1 - Zeraki Achievers 3.0 - Marking Scheme.pdf",
         url: "#"
->>>>>>> 9041eb4 (1)
     }
 ];
 
@@ -292,8 +291,12 @@ let pageNumPending = null;
 // Add PDF.js worker
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
+// expose data for debugging
+window.papersData = papersData;
+
 // Initialize on page load
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOMContentLoaded: papersData length', papersData.length);
     renderPapers(papersData);
     renderFeatured();
     renderTrending();
@@ -864,4 +867,3 @@ function voteDifficulty(level) {
         feedback.style.display = 'none';
     }, 3000);
 }
-
